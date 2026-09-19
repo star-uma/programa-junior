@@ -1,0 +1,68 @@
+# Publica la web en GitHub Pages en cada push a main.
+# En los Pull Requests solo comprueba que data/programa.json es correcto.
+#
+# Requisito (una sola vez): Settings → Pages → Build and deployment → Source: "GitHub Actions".
+# Opcional: variables SUPABASE_URL y SUPABASE_ANON_KEY en
+# Settings → Secrets and variables → Actions → Variables (sin ellas, la web va en modo demo).
+
+name: Publicar web
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validar:
+    name: Validar programa
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - name: Comprobar data/programa.json
+        run: node scripts/validar-programa.mjs
+
+  publicar:
+    name: Publicar en GitHub Pages
+    needs: validar
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.despliegue.outputs.page_url }}
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Preparar los archivos de la web
+        run: |
+          mkdir _site
+          cp -r index.html css js data assets _site/
+
+      - name: Configurar Supabase
+        env:
+          SUPABASE_URL: ${{ vars.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ vars.SUPABASE_ANON_KEY }}
+        run: node scripts/generar-config.mjs _site/js/config.js
+
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+      - name: Desplegar
+        id: despliegue
+        uses: actions/deploy-pages@v5

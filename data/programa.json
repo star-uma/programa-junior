@@ -1,0 +1,340 @@
+{
+  "nombre": "Programa Junior STAR",
+  "departamentos": ["Software", "Hardware"],
+
+  "nivelesHabilidad": [
+    { "nombre": "Sin empezar", "descripcion": "Todavía no has completado este nivel" },
+    { "nombre": "Básico", "descripcion": "Lo haces con supervisión de un senior" },
+    { "nombre": "Autónomo", "descripcion": "Lo haces sin ayuda" },
+    { "nombre": "Avanzado", "descripcion": "Puedes enseñárselo a otros" }
+  ],
+
+  "xpPorNivel": { "1": 10, "2": 25, "3": 50 },
+
+  "rangos": [
+    { "xp": 0, "nombre": "Tornillo" },
+    { "xp": 100, "nombre": "Engranaje" },
+    { "xp": 250, "nombre": "Servo" },
+    { "xp": 500, "nombre": "Sensor" },
+    { "xp": 850, "nombre": "Microcontrolador" },
+    { "xp": 1300, "nombre": "Robot" },
+    { "xp": 1900, "nombre": "Androide" }
+  ],
+
+  "habilidades": [
+    {
+      "id": "soldadura",
+      "nombre": "Soldadura",
+      "icono": "flame",
+      "descripcion": "Soldadura de electrónica: THT, cables, conectores y reparación.",
+      "tareas": {
+        "1": [
+          { "id": "sol-1a", "nombre": "Normas de seguridad de la estación de soldadura", "detalle": "Humos, temperatura, soporte, limpieza de la punta y apagado." },
+          { "id": "sol-1b", "nombre": "Soldar y desoldar componentes THT en placa de prácticas", "detalle": "Incluye usar malla y bomba desoldadora." },
+          { "id": "sol-1c", "nombre": "Empalmar cables y aislar con termorretráctil" }
+        ],
+        "2": [
+          { "id": "sol-2a", "nombre": "Soldar y crimpar los conectores del equipo", "detalle": "XT60, JST, Dupont..." },
+          { "id": "sol-2b", "nombre": "Montar una placa perforada funcional a partir de un esquema" },
+          { "id": "sol-2c", "nombre": "Detectar soldaduras frías y comprobar continuidad con el polímetro" }
+        ],
+        "3": [
+          { "id": "sol-3a", "nombre": "Soldar componentes SMD (0805 o menores)" },
+          { "id": "sol-3b", "nombre": "Reparar un fallo de electrónica en un robot del equipo" }
+        ]
+      }
+    },
+    {
+      "id": "git",
+      "nombre": "Git y GitHub",
+      "icono": "git-branch",
+      "descripcion": "Control de versiones y trabajo colaborativo en los repositorios del equipo.",
+      "tareas": {
+        "1": [
+          { "id": "git-1a", "nombre": "Configurar Git y una clave SSH con tu cuenta de GitHub", "detalle": "Y unirte a la organización del equipo." },
+          { "id": "git-1b", "nombre": "Clonar, hacer commits con mensajes claros y push" },
+          { "id": "git-1c", "nombre": "Entender status, diff, log y .gitignore" }
+        ],
+        "2": [
+          { "id": "git-2a", "nombre": "Trabajar con ramas y abrir un Pull Request" },
+          { "id": "git-2b", "nombre": "Resolver un conflicto de merge" },
+          { "id": "git-2c", "nombre": "Revisar el Pull Request de un compañero" }
+        ],
+        "3": [
+          { "id": "git-3a", "nombre": "Rebase, cherry-pick y recuperar trabajo con reflog" },
+          { "id": "git-3b", "nombre": "Configurar un workflow de GitHub Actions en un repo del equipo" }
+        ]
+      }
+    },
+    {
+      "id": "esp32",
+      "nombre": "ESP32",
+      "icono": "cpu",
+      "descripcion": "Programación de microcontroladores, periféricos y comunicaciones.",
+      "tareas": {
+        "1": [
+          { "id": "esp-1a", "nombre": "Instalar el entorno (Arduino IDE o PlatformIO) y flashear un blink" },
+          { "id": "esp-1b", "nombre": "Leer entradas digitales y analógicas y usar el monitor serie" },
+          { "id": "esp-1c", "nombre": "Generar PWM para controlar un LED y un servo" }
+        ],
+        "2": [
+          { "id": "esp-2a", "nombre": "Comunicar con un sensor por I2C o SPI" },
+          { "id": "esp-2b", "nombre": "Controlar un motor DC con un driver (puente H)" },
+          { "id": "esp-2c", "nombre": "Comunicación inalámbrica: WiFi, Bluetooth o ESP-NOW" }
+        ],
+        "3": [
+          { "id": "esp-3a", "nombre": "Usar FreeRTOS: tareas, colas y temporizadores" },
+          { "id": "esp-3b", "nombre": "Integrar el ESP32 con ROS2 mediante micro-ROS" }
+        ]
+      }
+    },
+    {
+      "id": "linux",
+      "nombre": "Linux",
+      "icono": "terminal",
+      "descripcion": "Terminal, sistema y administración básica de los ordenadores de los robots.",
+      "tareas": {
+        "1": [
+          { "id": "lin-1a", "nombre": "Instalar Ubuntu (nativo o dual boot)" },
+          { "id": "lin-1b", "nombre": "Moverse por la terminal: rutas, ficheros y permisos" },
+          { "id": "lin-1c", "nombre": "Instalar paquetes con apt y entender sudo" }
+        ],
+        "2": [
+          { "id": "lin-2a", "nombre": "Conectarse por SSH a un robot y copiar ficheros (scp/rsync)" },
+          { "id": "lin-2b", "nombre": "Escribir scripts de bash y configurar variables de entorno" },
+          { "id": "lin-2c", "nombre": "Gestionar procesos y sesiones (ps, kill, tmux)" }
+        ],
+        "3": [
+          { "id": "lin-3a", "nombre": "Configurar el arranque automático de un robot con systemd" },
+          { "id": "lin-3b", "nombre": "Construir y ejecutar un contenedor Docker del equipo" }
+        ]
+      }
+    },
+    {
+      "id": "ros2",
+      "nombre": "ROS2, C++ y Python",
+      "icono": "code-xml",
+      "descripcion": "Programación en C++ y Python y desarrollo de software robótico con ROS2.",
+      "tareas": {
+        "1": [
+          { "id": "ros-1a", "nombre": "Completar los ejercicios de introducción a Python y C++" },
+          { "id": "ros-1b", "nombre": "Tutoriales de ROS2: nodos, topics y servicios con turtlesim" },
+          { "id": "ros-1c", "nombre": "Crear un workspace y compilar con colcon" }
+        ],
+        "2": [
+          { "id": "ros-2a", "nombre": "Escribir un paquete propio con publisher y subscriber" },
+          { "id": "ros-2b", "nombre": "Usar launch files y parámetros" },
+          { "id": "ros-2c", "nombre": "Depurar con rqt, rviz2 y ros2 bag" }
+        ],
+        "3": [
+          { "id": "ros-3a", "nombre": "Describir un robot con URDF y usar TF2" },
+          { "id": "ros-3b", "nombre": "Contribuir un nodo funcional al software de un robot del equipo" }
+        ]
+      }
+    },
+    {
+      "id": "impresion3d",
+      "nombre": "Impresión 3D",
+      "icono": "printer",
+      "descripcion": "Uso, calibración y mantenimiento de las impresoras del taller.",
+      "tareas": {
+        "1": [
+          { "id": "imp-1a", "nombre": "Normas de uso de las impresoras y registro de impresiones" },
+          { "id": "imp-1b", "nombre": "Laminar una pieza y lanzarla con supervisión" },
+          { "id": "imp-1c", "nombre": "Retirar una pieza y cambiar el filamento" }
+        ],
+        "2": [
+          { "id": "imp-2a", "nombre": "Elegir material y parámetros según la pieza", "detalle": "Relleno, perímetros, soportes y orientación." },
+          { "id": "imp-2b", "nombre": "Calibrar: nivelado de cama, primera capa y flujo" },
+          { "id": "imp-2c", "nombre": "Diagnosticar fallos comunes", "detalle": "Warping, stringing, capas desplazadas..." }
+        ],
+        "3": [
+          { "id": "imp-3a", "nombre": "Mantenimiento: cambiar la boquilla y desatascar el extrusor" },
+          { "id": "imp-3b", "nombre": "Imprimir con materiales técnicos (TPU, PETG, fibra de carbono)" }
+        ]
+      }
+    },
+    {
+      "id": "modelado",
+      "nombre": "Modelado 3D",
+      "icono": "box",
+      "descripcion": "Diseño mecánico en CAD (OnShape, SolidWorks...).",
+      "tareas": {
+        "1": [
+          { "id": "cad-1a", "nombre": "Croquis con restricciones y operaciones básicas", "detalle": "Extrusión, vaciado, redondeo, patrones." },
+          { "id": "cad-1b", "nombre": "Modelar una pieza sencilla a partir de un plano acotado" },
+          { "id": "cad-1c", "nombre": "Exportar a STL/STEP e imprimir tu propia pieza" }
+        ],
+        "2": [
+          { "id": "cad-2a", "nombre": "Crear ensamblajes con relaciones de posición" },
+          { "id": "cad-2b", "nombre": "Diseñar para fabricación", "detalle": "Tolerancias, insertos roscados, tornillería métrica." },
+          { "id": "cad-2c", "nombre": "Generar el plano 2D de una pieza" }
+        ],
+        "3": [
+          { "id": "cad-3a", "nombre": "Diseñar un subsistema completo de un robot" },
+          { "id": "cad-3b", "nombre": "Diseño paramétrico con variables y configuraciones" }
+        ]
+      }
+    },
+    {
+      "id": "robots",
+      "nombre": "Robots del equipo",
+      "icono": "bot",
+      "descripcion": "Conocer, preparar y operar los robots de competición del equipo.",
+      "tareas": {
+        "1": [
+          { "id": "rob-1a", "nombre": "Conocer los robots del equipo, sus categorías y la normativa de competición" },
+          { "id": "rob-1b", "nombre": "Manejo seguro de baterías LiPo", "detalle": "Carga, almacenamiento, bolsa ignífuga y qué hacer si una se hincha." },
+          { "id": "rob-1c", "nombre": "Encender, apagar y teleoperar un robot con supervisión" }
+        ],
+        "2": [
+          { "id": "rob-2a", "nombre": "Preparar un robot con la checklist previa", "detalle": "Baterías, conexiones, tornillería y pruebas." },
+          { "id": "rob-2b", "nombre": "Explicar la arquitectura (electrónica y software) de un robot" },
+          { "id": "rob-2c", "nombre": "Diagnosticar y resolver una avería habitual" }
+        ],
+        "3": [
+          { "id": "rob-3a", "nombre": "Ser responsable de un robot en una competición o demo" },
+          { "id": "rob-3b", "nombre": "Diseñar e integrar una mejora en un robot" }
+        ]
+      }
+    }
+  ],
+
+  "categoriasHitos": [
+    { "id": "permiso", "nombre": "Permisos", "descripcion": "Lo que puedes hacer por tu cuenta en el taller y en el equipo." },
+    { "id": "logro", "nombre": "Logros", "descripcion": "Contribuciones y habilidades demostradas." },
+    { "id": "equipo", "nombre": "Vida de equipo", "descripcion": "Competiciones, divulgación y ayudar a otros." }
+  ],
+
+  "hitos": [
+    {
+      "id": "seguridad", "categoria": "permiso", "icono": "shield-check", "xp": 20, "aprobacion": true,
+      "nombre": "Formación en seguridad",
+      "descripcion": "Charla de normas del taller: EPIs, extintor, botiquín y qué hacer ante un accidente.",
+      "requisitos": []
+    },
+    {
+      "id": "acceso-taller", "categoria": "permiso", "icono": "key-round", "xp": 100, "aprobacion": true,
+      "nombre": "Acceso autónomo al taller",
+      "descripcion": "Puedes entrar y trabajar en el taller sin que te acompañe un senior.",
+      "requisitos": [
+        { "hito": "seguridad" },
+        { "habilidad": "soldadura", "nivel": 1 },
+        { "habilidad": "impresion3d", "nivel": 1 },
+        { "tarea": "rob-1b" }
+      ]
+    },
+    {
+      "id": "impresion-libre", "categoria": "permiso", "icono": "printer-check", "xp": 40, "aprobacion": true,
+      "nombre": "Impresiones sin supervisión",
+      "descripcion": "Puedes lanzar tus propias impresiones sin pedir permiso.",
+      "requisitos": [ { "hito": "seguridad" }, { "habilidad": "impresion3d", "nivel": 2 } ]
+    },
+    {
+      "id": "lipo", "categoria": "permiso", "icono": "battery-charging", "xp": 30, "aprobacion": true,
+      "nombre": "Carga de baterías LiPo",
+      "descripcion": "Puedes cargar y almacenar baterías LiPo sin supervisión.",
+      "requisitos": [ { "hito": "seguridad" }, { "tarea": "rob-1b" } ]
+    },
+    {
+      "id": "github-escritura", "categoria": "permiso", "icono": "git-pull-request", "xp": 40, "aprobacion": true,
+      "nombre": "Escritura en los repos del equipo",
+      "descripcion": "Permisos de escritura en la organización de GitHub para crear ramas y revisar PRs.",
+      "requisitos": [ { "habilidad": "git", "nivel": 2 } ]
+    },
+    {
+      "id": "piloto", "categoria": "permiso", "icono": "gamepad-2", "xp": 60, "aprobacion": true,
+      "nombre": "Piloto autorizado",
+      "descripcion": "Puedes operar los robots del equipo en solitario en pruebas y demos.",
+      "requisitos": [ { "hito": "lipo" }, { "habilidad": "robots", "nivel": 2 } ]
+    },
+    {
+      "id": "material", "categoria": "permiso", "icono": "package", "xp": 30, "aprobacion": true,
+      "nombre": "Gestión de material",
+      "descripcion": "Puedes retirar componentes del inventario y proponer pedidos.",
+      "requisitos": [ { "hito": "acceso-taller" } ]
+    },
+
+    {
+      "id": "primeros-pasos", "categoria": "logro", "icono": "footprints", "xp": 10, "aprobacion": false,
+      "nombre": "Primeros pasos",
+      "descripcion": "Tu primera tarea validada por un senior.",
+      "requisitos": [ { "tareasCompletadas": 1 } ]
+    },
+    {
+      "id": "todoterreno", "categoria": "logro", "icono": "compass", "xp": 80, "aprobacion": false,
+      "nombre": "Todoterreno",
+      "descripcion": "Nivel Básico en todas las habilidades.",
+      "requisitos": [ { "habilidadesConNivel": { "nivel": 1, "cantidad": 8 } } ]
+    },
+    {
+      "id": "especialista", "categoria": "logro", "icono": "medal", "xp": 80, "aprobacion": false,
+      "nombre": "Especialista",
+      "descripcion": "Nivel Avanzado en al menos una habilidad.",
+      "requisitos": [ { "habilidadesConNivel": { "nivel": 3, "cantidad": 1 } } ]
+    },
+    {
+      "id": "primer-pr", "categoria": "logro", "icono": "git-merge", "xp": 40, "aprobacion": true,
+      "nombre": "Primer PR aceptado",
+      "descripcion": "Un Pull Request tuyo integrado en un repositorio del equipo.",
+      "requisitos": [ { "habilidad": "git", "nivel": 1 } ]
+    },
+    {
+      "id": "pieza-robot", "categoria": "logro", "icono": "cog", "xp": 50, "aprobacion": true,
+      "nombre": "Pieza propia en un robot",
+      "descripcion": "Una pieza diseñada e impresa por ti montada en un robot del equipo.",
+      "requisitos": [ { "habilidad": "modelado", "nivel": 1 }, { "habilidad": "impresion3d", "nivel": 1 } ]
+    },
+    {
+      "id": "proyecto-junior", "categoria": "logro", "icono": "rocket", "xp": 150, "aprobacion": true,
+      "nombre": "Proyecto junior",
+      "descripcion": "Completar el proyecto integrador: por ejemplo un minirobot con ESP32, ROS2 y chasis impreso.",
+      "requisitos": [
+        { "habilidad": "esp32", "nivel": 1 },
+        { "habilidad": "ros2", "nivel": 1 },
+        { "habilidad": "modelado", "nivel": 1 }
+      ]
+    },
+
+    {
+      "id": "primera-competicion", "categoria": "equipo", "icono": "trophy", "xp": 80, "aprobacion": true,
+      "nombre": "Primera competición",
+      "descripcion": "Participar con el equipo en una competición.",
+      "requisitos": []
+    },
+    {
+      "id": "divulgacion", "categoria": "equipo", "icono": "megaphone", "xp": 40, "aprobacion": true,
+      "nombre": "Divulgación",
+      "descripcion": "Participar en un evento de divulgación: puertas abiertas, feria o taller en un colegio.",
+      "requisitos": []
+    },
+    {
+      "id": "documentador", "categoria": "equipo", "icono": "book-open", "xp": 30, "aprobacion": true,
+      "nombre": "Documentador",
+      "descripcion": "Escribir o mejorar una página de la documentación del equipo.",
+      "requisitos": []
+    },
+    {
+      "id": "mentor", "categoria": "equipo", "icono": "users", "xp": 60, "aprobacion": true,
+      "nombre": "Mentor",
+      "descripcion": "Impartir un minitaller o guiar a un junior nuevo en una tarea.",
+      "requisitos": [ { "habilidadesConNivel": { "nivel": 2, "cantidad": 1 } } ]
+    }
+  ],
+
+  "senior": {
+    "nombre": "Ascenso a Senior",
+    "descripcion": "Cuando cumples todos los requisitos, coordinación revisa tu trayectoria y te asciende.",
+    "requisitos": [
+      { "habilidadesConNivel": { "nivel": 1, "cantidad": 8 }, "texto": "Nivel Básico en las 8 habilidades" },
+      { "habilidadesConNivel": { "nivel": 2, "cantidad": 3 }, "texto": "Nivel Autónomo en al menos 3 habilidades (tu especialidad)" },
+      { "habilidad": "robots", "nivel": 2 },
+      { "hito": "acceso-taller" },
+      { "hito": "proyecto-junior" },
+      {
+        "algunoDe": [ { "hito": "primera-competicion" }, { "hito": "divulgacion" } ],
+        "texto": "Participar en una competición o en un evento de divulgación"
+      }
+    ]
+  }
+}

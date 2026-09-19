@@ -1,0 +1,10 @@
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Web generada por GitHub Actions al publicar
+_site/
+
+# Configuración local de Claude Code
+.claude/

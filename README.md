@@ -4,7 +4,7 @@
 
 Plataforma web del equipo **STAR** (Student Team of Advanced Robotics, Universidad de Málaga) para seguir el camino de los nuevos miembros de **Junior** a **Senior**: qué habilidades dominan, qué hitos han conseguido (como el acceso autónomo al taller) y qué les falta para ascender.
 
-🌐 **Web:** `https://ORGANIZACION.github.io/REPOSITORIO/` <!-- Sustituir por la URL real tras la primera publicación -->
+🌐 **Web:** `https://star-uma.github.io/programa-junior/`
 
 > **La regla de oro:** cada junior crea su propio perfil y puede *pedir* que le validen algo, pero **solo un senior puede marcar una tarea como hecha u otorgar un hito**. Esta regla la aplica la base de datos, así que no se puede saltar ni tocando la web. Por eso tu progreso refleja lo que de verdad sabes hacer.
 

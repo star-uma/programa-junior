@@ -3,7 +3,8 @@
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
 export function crearStoreSupabase(url, anonKey) {
-  const sb = createClient(url, anonKey);
+  // Solo la raíz del proyecto: si la URL trae una ruta (p. ej. /rest/v1/), el login falla.
+  const sb = createClient(new URL(url).origin, anonKey);
   let userId = null;
 
   // Traduce errores de Supabase/Postgres a mensajes legibles.

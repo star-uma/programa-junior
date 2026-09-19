@@ -5,14 +5,26 @@
 import { readFile, writeFile } from 'node:fs/promises';
 
 const destino = process.argv[2] ?? 'js/config.js';
-const url = (process.env.SUPABASE_URL ?? '').trim();
+const urlBruta = (process.env.SUPABASE_URL ?? '').trim();
 const clave = (process.env.SUPABASE_ANON_KEY ?? '').trim();
 
-if (url && clave) {
-  if (!/^https:\/\/\S+$/.test(url)) {
-    console.error(`✗ SUPABASE_URL no parece una URL válida: «${url}»`);
+if (urlBruta && clave) {
+  let url;
+  try {
+    url = new URL(urlBruta);
+  } catch {
+    console.error(`✗ SUPABASE_URL no es una URL válida: «${urlBruta}»`);
     process.exit(1);
   }
+  if (url.protocol !== 'https:' || url.hostname.endsWith('supabase.com')) {
+    console.error(`✗ SUPABASE_URL debe ser la "Project URL" (https://xxxx.supabase.co), no «${urlBruta}»`);
+    process.exit(1);
+  }
+  // Solo vale la raíz del proyecto: una ruta como /rest/v1/ rompe el inicio de sesión.
+  if (url.pathname !== '/' || url.search) {
+    console.log(`::warning title=SUPABASE_URL corregida::Se ha quitado «${url.pathname}${url.search}» de la variable SUPABASE_URL. Pon solo ${url.origin}`);
+  }
+  url = url.origin;
   await writeFile(destino, [
     '// Generado automáticamente por GitHub Actions al publicar. No editar.',
     `export const SUPABASE_URL = ${JSON.stringify(url)};`,

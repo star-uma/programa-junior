@@ -19,6 +19,19 @@ export function crearStoreSupabase(url, anonKey) {
     throw new Error(msg);
   };
 
+  // Supabase devuelve como máximo 1.000 filas por consulta y no avisa si corta.
+  // Esta función pide páginas hasta traerlas todas. `consulta` crea la consulta
+  // desde cero en cada página; debe llevar un orden estable para no saltar filas.
+  const POR_PAGINA = 1000;
+  const todas = async (consulta) => {
+    const filas = [];
+    for (let desde = 0; ; desde += POR_PAGINA) {
+      const pagina = comprobar(await consulta().range(desde, desde + POR_PAGINA - 1));
+      filas.push(...pagina);
+      if (pagina.length < POR_PAGINA) return filas;
+    }
+  };
+
   return {
     modo: 'supabase',
 
@@ -72,7 +85,7 @@ export function crearStoreSupabase(url, anonKey) {
 
     // --- Perfiles -----------------------------------------------------------------
     async perfiles() {
-      return comprobar(await sb.from('perfiles').select('*').order('nombre'));
+      return todas(() => sb.from('perfiles').select('*').order('nombre').order('id'));
     },
 
     async actualizarPerfil(id, cambios) {
@@ -85,11 +98,12 @@ export function crearStoreSupabase(url, anonKey) {
 
     // --- Progreso -------------------------------------------------------------------
     async progreso(juniorId) {
-      let qt = sb.from('tareas_completadas').select('*');
-      let qh = sb.from('hitos_otorgados').select('*');
-      if (juniorId) { qt = qt.eq('junior_id', juniorId); qh = qh.eq('junior_id', juniorId); }
-      const [t, h] = await Promise.all([qt, qh]);
-      return { tareas: comprobar(t), hitos: comprobar(h) };
+      const filtrar = (q) => (juniorId ? q.eq('junior_id', juniorId) : q);
+      const [tareas, hitos] = await Promise.all([
+        todas(() => filtrar(sb.from('tareas_completadas').select('*')).order('junior_id').order('tarea_id')),
+        todas(() => filtrar(sb.from('hitos_otorgados').select('*')).order('junior_id').order('hito_id')),
+      ]);
+      return { tareas, hitos };
     },
 
     async validarTarea(juniorId, tareaId, { fecha, nota }) {
@@ -116,9 +130,10 @@ export function crearStoreSupabase(url, anonKey) {
 
     // --- Solicitudes de validación ------------------------------------------------------
     async solicitudes(juniorId) {
-      let q = sb.from('solicitudes').select('*').order('created_at');
-      if (juniorId) q = q.eq('junior_id', juniorId);
-      return comprobar(await q);
+      return todas(() => {
+        const q = sb.from('solicitudes').select('*');
+        return (juniorId ? q.eq('junior_id', juniorId) : q).order('created_at').order('id');
+      });
     },
 
     async solicitar({ tipo, item_id, mensaje }) {

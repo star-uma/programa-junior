@@ -139,18 +139,19 @@
       "descripcion": "Uso, calibración y mantenimiento de las impresoras del taller.",
       "tareas": {
         "1": [
-          { "id": "imp-1a", "nombre": "Normas de uso de las impresoras y registro de impresiones" },
-          { "id": "imp-1b", "nombre": "Laminar una pieza y lanzarla con supervisión" },
-          { "id": "imp-1c", "nombre": "Retirar una pieza y cambiar el filamento" }
+          { "id": "imp-1a", "nombre": "Asistir al curso básico de impresión 3D" },
+          { "id": "imp-1b", "nombre": "Cambiar filamento y control básico del menú" },
+          { "id": "imp-1c", "nombre": "Retirar una pieza satisfactoriamente" }
         ],
         "2": [
-          { "id": "imp-2a", "nombre": "Elegir material y parámetros según la pieza", "detalle": "Relleno, perímetros, soportes y orientación." },
-          { "id": "imp-2b", "nombre": "Calibrar: nivelado de cama, primera capa y flujo" },
+          { "id": "imp-2a", "nombre": "Realizar taller de calibración ", "detalle": "Ejes, boquillas, cama caliente..." },
+          { "id": "imp-2b", "nombre": "Hacer los test de impresión", "detalle": "Temperatura, flujo, velocidad..." },
           { "id": "imp-2c", "nombre": "Diagnosticar fallos comunes", "detalle": "Warping, stringing, capas desplazadas..." }
         ],
         "3": [
-          { "id": "imp-3a", "nombre": "Mantenimiento: cambiar la boquilla y desatascar el extrusor" },
-          { "id": "imp-3b", "nombre": "Imprimir con materiales técnicos (TPU, PETG, fibra de carbono)" }
+          { "id": "imp-3a", "nombre": "Usar el programa Pronterface para controlar la impresora", "detalle": "Mover ejes, calentar, enviar G-code..." },
+          { "id": "imp-3b", "nombre": "Entender que cada pieza es un mundo", "detalle": "Orcaslicer: soportes, relleno, orientación..." },
+          { "id": "imp-3c", "nombre": "Conocer el firmware de la impresora y como actualizarlo", "detalle": "Marlin, Klipper y customizaciones." }
         ]
       }
     },

@@ -141,7 +141,7 @@
         "1": [
           { "id": "imp-1a", "nombre": "Asistir al curso básico de impresión 3D" },
           { "id": "imp-1b", "nombre": "Cambiar filamento y control básico del menú" },
-          { "id": "imp-1c", "nombre": "Retirar una pieza satisfactoriamente" }
+          { "id": "imp-1c", "nombre": "Imprimir tu primera pieza" }
         ],
         "2": [
           { "id": "imp-2a", "nombre": "Realizar taller de calibración ", "detalle": "Ejes, boquillas, cama caliente..." },
